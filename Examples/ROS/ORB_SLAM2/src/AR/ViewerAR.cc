@@ -21,7 +21,10 @@
 #include "ViewerAR.h"
 
 #include <opencv2/highgui/highgui.hpp>
-
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "Viewer.h"
 #include <mutex>
 #include <thread>
 #include <cstdlib>
@@ -230,7 +233,7 @@ void ViewerAR::Run()
         }
 
         pangolin::FinishFrame();
-        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<size_t>(mT)));
+        usleep(mT*1000);
     }
 
 }
