@@ -231,30 +231,11 @@ void ImageGrabber::GrabStereo(const sensor_msgs::ImageConstPtr& msgLeft,const se
     tf::Vector3 globalTranslation_rh = cameraTranslation_rh * rotation270degXZ;
     tf::Transform transform = tf::Transform( globalQ , globalTranslation_rh);
 
-    broadcaster.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "map", "laser"));
-    broadcaster.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "map", "pose"));
+    broadcaster.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "map", "odom"));
 
 
-//    cout<<"globalQ: "<<globalQ.x()<<globalQ.y()<<globalQ.z()<<globalQ.w()<<endl;
-//    cout<<globalTranslation_rh[0]<<" "<<globalTranslation_rh[1]<<" "<<globalTranslation_rh[2]<<endl;
-
-//    long unsigned int odom_frame_id= mpSLAM->mpTracker->mCurrentFrame.mnId;
-//
-//    nav_msgs::Odometry odom;
-//    odom.header.stamp = ros::Time::now();
-//    odom.header.frame_id = odom_frame_id; // odom_frame
-//    odom.child_frame_id = "pose"; // base_frame
-//
-//    odom.pose.pose.position.x = globalTranslation_rh[0];
-//    odom.pose.pose.position.y = globalTranslation_rh[1];
-//    odom.pose.pose.position.z =  globalTranslation_rh[2];
-//    odom.pose.pose.orientation.x = globalQ.x();
-//    odom.pose.pose.orientation.y =  globalQ.y();
-//    odom.pose.pose.orientation.z = globalQ.z();
-//    odom.pose.pose.orientation.w =  globalQ.w();
-//    // Publish odometry message
-//    pub_odom.publish(odom);
 
 }
+
 
 
